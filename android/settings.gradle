@@ -1,0 +1,3 @@
+rootProject.name = 'react_test'
+
+include ':app'
