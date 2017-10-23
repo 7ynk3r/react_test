@@ -7,8 +7,11 @@ import ShallowRenderer from 'react-test-renderer/shallow';
 
 // const sleep = (ms) => new Promise(resolve => setTimeout(resolve, ms));
 
-const data = {
-  user: 'joe',
+const cart = {
+  user: {
+    name: 'joe',
+    email: 'joe@mail.com',
+  },
   items: [{
     id: 1,
     name: 'item 1',
@@ -18,16 +21,23 @@ const data = {
     name: 'item 2',
     price: 2,
   }],
-}
+};
 
 const Cart = ({ cart }) => (
-  <View>
+  <Container>
     <User user={ cart.user } />
     <Items items={ cart.items } />
-  </View>
+  </Container>
 );
 
-const User = ({ user }) => <Text>{ user }</Text>;
+const Container = (props) => <View { ...props } />
+
+const User = ({ user }) => (
+  <Title>{ user.name + ' - ' + user.email }</Title>
+);
+
+const Title = (props) => <Text { ...props } />
+
 
 class Items extends React.Component {
   constructor(props) {
@@ -44,7 +54,7 @@ class Items extends React.Component {
     this.setState(this.calculateState(items));
   }
   render = () => (
-    <View>
+    <Container>
       { this.state.items.map(item => (
         <Item
           key={ item.id }
@@ -53,23 +63,45 @@ class Items extends React.Component {
         />
       ))}
       <Total total={ this.state.total }/>
-    </View>
+    </Container>
   )
 }
 
 const Total = ({ total }) => <Text>Total { total }</Text>
 
 const Item = ({ item, onDelete }) => (
-  <View>
+  <Container>
     <Text>{ item.name }</Text>
     <Text>{ item.price }</Text>
     <Button title='Delete' onPress={ onDelete }/>
-  </View>
+  </Container>
 );
+
+const user =  {
+  name: 'joe',
+  email: 'joe@mail.com',
+};
+
+it('renders user deep correctly', () => {
+  const tree = renderer.create(<User user={ user }/>);
+  expect(tree).toMatchSnapshot();
+});
+
+it('renders user shallow correctly', () => {
+  const renderer = new ShallowRenderer();
+  renderer.render(<User user={ user }/>);
+  const tree = renderer.getRenderOutput();
+  expect(tree).toMatchSnapshot();
+});
+
+/////////////////////////
 
 it('renders correctly', () => {
   const cart = {
-    user: 'joe',
+    user: {
+      name: 'joe',
+      email: 'joe@mail.com',
+    },
     items: [{
       id: 1, name: 'item 1', value: 7,
     }, {

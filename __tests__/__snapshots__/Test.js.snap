@@ -8,7 +8,7 @@ exports[`renders correctly 1`] = `
     disabled={false}
     ellipsizeMode="tail"
   >
-    joe
+    joe - joe@mail.com
   </Text>
   <View>
     <View>
@@ -167,15 +167,15 @@ exports[`renders correctly 1`] = `
 `;
 
 exports[`renders empty correctly 1`] = `
-<View>
+<Container>
   <Total
     total={0}
   />
-</View>
+</Container>
 `;
 
 exports[`renders one item correctly 1`] = `
-<View>
+<Container>
   <Item
     item={
       Object {
@@ -189,11 +189,11 @@ exports[`renders one item correctly 1`] = `
   <Total
     total={7}
   />
-</View>
+</Container>
 `;
 
 exports[`renders one item deleted correctly 1`] = `
-<View>
+<Container>
   <Item
     item={
       Object {
@@ -217,11 +217,11 @@ exports[`renders one item deleted correctly 1`] = `
   <Total
     total={11}
   />
-</View>
+</Container>
 `;
 
 exports[`renders one item deleted correctly 2`] = `
-<View>
+<Container>
   <Item
     item={
       Object {
@@ -235,5 +235,22 @@ exports[`renders one item deleted correctly 2`] = `
   <Total
     total={4}
   />
-</View>
+</Container>
+`;
+
+exports[`renders user deep correctly 1`] = `
+<Text
+  accessible={true}
+  allowFontScaling={true}
+  disabled={false}
+  ellipsizeMode="tail"
+>
+  joe - joe@mail.com
+</Text>
+`;
+
+exports[`renders user shallow correctly 1`] = `
+<Title>
+  joe - joe@mail.com
+</Title>
 `;
