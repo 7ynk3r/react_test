@@ -1,7 +1,7 @@
 # React Testing Done Right 
 ## Demo Project
 
-To run the test
+To run the tests
 ```
 yarn test 
 # or 
