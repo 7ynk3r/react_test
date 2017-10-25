@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`renders correctly 1`] = `
+exports[`Cart renders deep correctly 1`] = `
 <View>
   <Text
     accessible={true}
@@ -25,7 +25,9 @@ exports[`renders correctly 1`] = `
         allowFontScaling={true}
         disabled={false}
         ellipsizeMode="tail"
-      />
+      >
+        7
+      </Text>
       <View
         accessibilityComponentType="button"
         accessibilityLabel={undefined}
@@ -96,7 +98,9 @@ exports[`renders correctly 1`] = `
         allowFontScaling={true}
         disabled={false}
         ellipsizeMode="tail"
-      />
+      >
+        4
+      </Text>
       <View
         accessibilityComponentType="button"
         accessibilityLabel={undefined}
@@ -166,22 +170,43 @@ exports[`renders correctly 1`] = `
 </View>
 `;
 
-exports[`renders empty correctly 1`] = `
+exports[`Cart renders shallow correctly 1`] = `
 <Container>
-  <Total
-    total={0}
+  <User
+    user={
+      Object {
+        "email": "joe@mail.com",
+        "name": "joe",
+      }
+    }
+  />
+  <Items
+    items={
+      Array [
+        Object {
+          "id": 1,
+          "name": "item 1",
+          "price": 7,
+        },
+        Object {
+          "id": 2,
+          "name": "item 2",
+          "price": 4,
+        },
+      ]
+    }
   />
 </Container>
 `;
 
-exports[`renders one item correctly 1`] = `
+exports[`Items renders one item correctly 1`] = `
 <Container>
   <Item
     item={
       Object {
         "id": 1,
         "name": "item 1",
-        "value": 7,
+        "price": 7,
       }
     }
     onDelete={[Function]}
@@ -192,14 +217,14 @@ exports[`renders one item correctly 1`] = `
 </Container>
 `;
 
-exports[`renders one item deleted correctly 1`] = `
+exports[`Items renders two items and deletes correctly 1`] = `
 <Container>
   <Item
     item={
       Object {
         "id": 1,
         "name": "item 1",
-        "value": 7,
+        "price": 7,
       }
     }
     onDelete={[Function]}
@@ -209,7 +234,7 @@ exports[`renders one item deleted correctly 1`] = `
       Object {
         "id": 2,
         "name": "item 2",
-        "value": 4,
+        "price": 4,
       }
     }
     onDelete={[Function]}
@@ -220,14 +245,14 @@ exports[`renders one item deleted correctly 1`] = `
 </Container>
 `;
 
-exports[`renders one item deleted correctly 2`] = `
+exports[`Items renders two items and deletes correctly 2`] = `
 <Container>
   <Item
     item={
       Object {
         "id": 2,
         "name": "item 2",
-        "value": 4,
+        "price": 4,
       }
     }
     onDelete={[Function]}
@@ -238,7 +263,15 @@ exports[`renders one item deleted correctly 2`] = `
 </Container>
 `;
 
-exports[`renders user deep correctly 1`] = `
+exports[`Items renders zero items correctly 1`] = `
+<Container>
+  <Total
+    total={0}
+  />
+</Container>
+`;
+
+exports[`User renders deep correctly 1`] = `
 <Text
   accessible={true}
   allowFontScaling={true}
@@ -249,7 +282,7 @@ exports[`renders user deep correctly 1`] = `
 </Text>
 `;
 
-exports[`renders user shallow correctly 1`] = `
+exports[`User renders shallow correctly 1`] = `
 <Title>
   joe - joe@mail.com
 </Title>
